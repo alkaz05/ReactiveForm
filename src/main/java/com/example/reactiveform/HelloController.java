@@ -5,7 +5,10 @@ import javafx.beans.Observable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+
+import java.text.DecimalFormat;
 
 public class HelloController {
 
@@ -18,6 +21,9 @@ public class HelloController {
     @FXML
     private TextField txtVal;
 
+    @FXML
+    Slider sliderVal;
+
 
 
     Model model= new Model("");
@@ -26,7 +32,7 @@ public class HelloController {
 
     @FXML
     void updateText(){
-        model.setName(mytext.getText());
+       // model.setName(mytext.getText());
       //  repeatText.setText(model.getName());
     }
 
@@ -50,16 +56,22 @@ public class HelloController {
      //   repeatText.setText("");
     }
 
-    public void refreshName()
-    {
-        mytext.setText(model.getName());
-        repeatText.setText(model.getName());
-    }
+   // public void refreshName()
+   // {
+        //mytext.setText(model.getName());
+        //repeatText.setText(model.getName());
+   // }
 
     public void initialize(){
-        model.name.addListener(observable -> refreshName());
-        model.value.addListener(observable -> txtVal.setText(String.valueOf(model.getValue())));
+        //model.name.addListener(observable -> refreshName());
+       // model.value.addListener(observable -> txtVal.setText(String.valueOf(model.getValue())));
 
+        model.name.bindBidirectional(mytext.textProperty());
+        model.name.bindBidirectional(repeatText.textProperty());
+
+        //model.value.bindBidirectional(txtVal.layoutXProperty());
+        txtVal.textProperty().bindBidirectional(model.valueProperty(), new DecimalFormat());
+        sliderVal.valueProperty().bindBidirectional(model.valueProperty());
     }
 
     @FXML
@@ -74,7 +86,7 @@ public class HelloController {
 
     @FXML
     void updateVal(ActionEvent event) {
-        model.setValue(Integer.parseInt(txtVal.getText()));
+       // model.setValue(Integer.parseInt(txtVal.getText()));
     }
 
 }
