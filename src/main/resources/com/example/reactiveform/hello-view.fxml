@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="304.0" prefWidth="432.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.reactiveform.HelloController">
+    <children>
+        <TextField fx:id="mytext" layoutX="125.0" layoutY="31.0" onAction="#updateText" prefHeight="31.0" prefWidth="181.0" />
+        <Button layoutX="24.0" layoutY="14.0" mnemonicParsing="false" onAction="#delLeft" prefHeight="66.0" prefWidth="79.0" text="убрать левый символ" textAlignment="CENTER" wrapText="true" />
+        <Button layoutX="332.0" layoutY="14.0" mnemonicParsing="false" onAction="#addStar" prefHeight="66.0" prefWidth="79.0" text="добавить * справа" textAlignment="CENTER" wrapText="true" />
+        <Label fx:id="repeatText" layoutX="24.0" layoutY="118.0" text="Label" />
+        <Button layoutX="183.0" layoutY="80.0" mnemonicParsing="false" onAction="#clearText" text="очистить" />
+    </children>
+</AnchorPane>
