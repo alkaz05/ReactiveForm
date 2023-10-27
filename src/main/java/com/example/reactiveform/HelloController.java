@@ -14,7 +14,15 @@ public class HelloController {
     @FXML
     Label repeatText;
 
+
+    @FXML
+    private TextField txtVal;
+
+
+
     Model model= new Model("");
+
+
 
     @FXML
     void updateText(){
@@ -50,6 +58,23 @@ public class HelloController {
 
     public void initialize(){
         model.name.addListener(observable -> refreshName());
+        model.value.addListener(observable -> txtVal.setText(String.valueOf(model.getValue())));
+
+    }
+
+    @FXML
+    void decr(ActionEvent event) {
+        model.decrement();
+    }
+
+    @FXML
+    void incr(ActionEvent event) {
+        model.increment();
+    }
+
+    @FXML
+    void updateVal(ActionEvent event) {
+        model.setValue(Integer.parseInt(txtVal.getText()));
     }
 
 }
